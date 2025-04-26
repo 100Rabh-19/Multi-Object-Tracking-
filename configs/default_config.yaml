@@ -1,0 +1,29 @@
+input: data/sample_video.mp4
+output: output/tracked_video.mp4
+save_results: true
+show: true
+
+# Detection
+model: yolov8n.pt
+conf_thresh: 0.25
+iou_thresh: 0.45
+classes: [0, 1, 2, 3]  # Person, Bicycle, Car, Motorcycle
+
+# Tracking
+tracker: sort  # Options: sort, deepsort
+max_age: 30
+min_hits: 3
+iou_tracking: 0.3
+use_class_info: true
+
+# DeepSORT specific
+max_cosine_dist: 0.2
+nn_budget: 100
+
+# Evaluation
+eval: false
+gt_file: data/MOT17/train/MOT17-04-GT/gt/gt.txt
+dataset_type: MOTChallenge
+
+# Other
+device: 0  # Use GPU 0 (leave empty for auto-selection)
