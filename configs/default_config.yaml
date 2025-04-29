@@ -1,4 +1,4 @@
-input: data/sample_video.mp4
+input: 0  # Use webcam (index 0)
 output: output/tracked_video.mp4
 save_results: true
 show: true
@@ -11,8 +11,8 @@ classes: [0, 1, 2, 3]  # Person, Bicycle, Car, Motorcycle
 
 # Tracking
 tracker: sort  # Options: sort, deepsort
-max_age: 30
-min_hits: 3
+max_age: 60  # Increased from 30 to keep tracks alive longer
+min_hits: 2  # Decreased from 3 to establish tracks faster
 iou_tracking: 0.3
 use_class_info: true
 

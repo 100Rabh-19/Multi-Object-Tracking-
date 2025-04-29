@@ -29,12 +29,14 @@ class YOLODetector:
         self.classes = classes
         
         # Load YOLO model
+        print(f"Loading YOLO model from: {model_path}")
         self.model = YOLO(model_path)
         self.device = device if device else ('cuda' if torch.cuda.is_available() else 'cpu')
         print(f"Running YOLOv8 detector on device: {self.device}")
         
         # Get class names if available
         self.class_names = self.model.names
+        print(f"Available classes: {self.class_names}")
         
     def detect(self, frame: np.ndarray) -> List[Dict]:
         """
